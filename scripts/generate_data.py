@@ -244,7 +244,6 @@ def generate_fraud_data(n_records=4000):
 
     df = pd.DataFrame(data)
 
-    # Calculate fraud risk score based on multiple factors
     df['fraud_risk_score'] = np.round(
         (df['ip_risk_score'] * 0.3 +
          (df['velocity_24h'] / 50 * 100) * 0.2 +
@@ -254,7 +253,6 @@ def generate_fraud_data(n_records=4000):
          df['is_international'] * 30) / 2, 1
     ).clip(0, 100)
 
-    # Flag transactions as fraudulent based on risk score
     df['is_fraud'] = (df['fraud_risk_score'] > 70).astype(int) | np.random.choice([0, 1], n_records, p=[0.97, 0.03])
     df['is_anomaly'] = (df['fraud_risk_score'] > 50).astype(int)
 
@@ -308,7 +306,6 @@ def main():
     print("Enterprise Intelligence Platform - Data Generation")
     print("=" * 60)
 
-    # Generate and save each dataset
     datasets = [
         ('Sales', generate_sales_data, 'sales/sales_data.csv'),
         ('HR', generate_hr_data, 'hr/hr_data.csv'),

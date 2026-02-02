@@ -16,8 +16,6 @@ __pycache__/
 *.egg-info/
 .eggs/
 *.egg
-
-# Virtual environments
 venv/
 env/
 .env
@@ -31,6 +29,6 @@ env/
 # Logs
 *.log
 
-# Temporary files
+# Temp
 tmp/
 temp/
